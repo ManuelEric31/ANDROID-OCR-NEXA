@@ -22,7 +22,7 @@ A Kotlin-based OCR (Optical Character Recognition) library for recognizing and e
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/ocr-ktp-processor.git
+   git clone https://github.com/ManuelEric31/ANDROID-OCR-NEXA.git
 
 2. Import OpenCV Android Modules (ver 4.10.0)
    References
