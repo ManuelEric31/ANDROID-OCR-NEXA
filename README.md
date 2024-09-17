@@ -33,5 +33,6 @@ A Kotlin-based OCR (Optical Character Recognition) library for recognizing and e
 - Option 1 from Gallery (More Accurate)
 - Option 2 from Capture Image
 
-![Logo Demo 1](https://github.com/ManuelEric31/ANDROID-OCR-NEXA/tree/main/app/src/main/res/drawable/designpage1.png)
-![Logo Demo 2](https://github.com/ManuelEric31/ANDROID-OCR-NEXA/tree/main/app/src/main/res/drawable/designpage2.png)
+![Logo Demo 1](app/src/main/res/drawable/designpage1.png)
+![Logo Demo 2](app/src/main/res/drawable/designpage2.png)
+
