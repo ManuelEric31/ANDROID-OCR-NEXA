@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">OCRNexa</string>
+    <string name="camera">Camera</string>
+    <string name="testing_ocr">Testing for OCR Product</string>
+    <string name="scan_label">Scan KTP</string>
+    <string name="cameraDesc">Scan Dokumen KTP Anda. Pastikan foto dalam keadaan cahaya yang cukup.</string>
+    <string name="scan">Scan Button</string>
+    <string name="gallery">Gallery Scan</string>
+    <string name="flashlight">Flashlight Scan</string>
+    <string name="flashlight_on">Flashlight On!</string>
+    <string name="flashlight_off">Flashlight Off!</string>
+    <string name="perm_not_granted">Permissions not granted by the user.</string>
+    <string name="post_process_image">Post Process Image</string>
+    <string name="information_detail">Detail Informasi</string>
+    <string name="NIK">NIK\n</string>
+    <string name="name">Nama</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="bloodCategory">Gol. Darah</string>
+    <string name="address">Alamat</string>
+    <string name="RTRW">RT/RW</string>
+    <string name="ward">Kel/Desa</string>
+    <string name="subdistrict">Kecamatan</string>
+    <string name="religion">Agama</string>
+    <string name="marriageStatus">Status Perkawinan</string>
+    <string name="job">Pekerjaan</string>
+    <string name="citizen">Kewarganegaraan</string>
+    <string name="validUntil">Berlaku Hingga</string>
+    <string name="DOB">Tempat/Tgl Lahir</string>
+</resources>

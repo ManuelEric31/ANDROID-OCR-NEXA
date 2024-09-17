@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.internship.ocrnexa.ResultActivity">
+
+        <TextView
+            android:id="@+id/tvInformationDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/information_detail"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/post_process_image" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutNIK"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:alpha="1"
+            android:hint="@string/NIK"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edNIK"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutName"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/name"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edName"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDOB"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/DOB"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edDOB"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutGender"
+                    style="@style/LoginTextInputOuterFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="1"
+                    android:hint="@string/gender"
+                    app:boxStrokeColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    tools:alpha="100">
+
+                    <EditText
+                        android:id="@+id/edGender"
+                        style="@style/LoginTextInputInnerFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="name"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="text"
+                        android:padding="18dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutBloodCategory"
+                    style="@style/LoginTextInputOuterFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="1"
+                    android:hint="@string/bloodCategory"
+                    app:boxStrokeColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    tools:alpha="100">
+
+                    <EditText
+                        android:id="@+id/edBloodCategory"
+                        style="@style/LoginTextInputInnerFieldStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="name"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="text"
+                        android:padding="18dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutAddress"
+
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/address"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edAddress"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutRTRW"
+
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/RTRW"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edRTRW"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutWard"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/ward"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edWard"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutSubdistrict"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/subdistrict"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edSubdistrict"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutReligion"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/religion"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edReligion"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutMariageStatus"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/marriageStatus"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edMarriageStatus"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutJob"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/job"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edJob"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutCitizen"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/citizen"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edCitizen"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutValidUntil"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:hint="@string/validUntil"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            tools:alpha="100">
+
+            <EditText
+                android:id="@+id/edValidUntil"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+</ScrollView>
