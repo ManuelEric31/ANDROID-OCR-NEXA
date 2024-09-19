@@ -3,6 +3,7 @@ package com.internship.ocrnexa
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
@@ -23,6 +24,7 @@ import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.internship.ocrnexa.databinding.ActivityCameraBinding
 import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -98,11 +100,62 @@ class CameraActivity : AppCompatActivity() {
                     val message = "Photo capture succeeded: $savedUri"
                     showToast(message)
                     Log.d(TAG, message)
-                    processImage(photoFile.absolutePath, savedUri.toString())
+
+                    val croppedBitmap = cropImage(photoFile)
+                    val croppedFile = saveCroppedImage(croppedBitmap)
+                    processImage(croppedFile.absolutePath, Uri.fromFile(croppedFile).toString())
                 }
             }
         )
     }
+
+    private fun cropImage(photoFile: File): Bitmap {
+        val originalBitmap = BitmapFactory.decodeFile(photoFile.absolutePath)
+        val boxRect = binding.boundingBoxOverlay.getBoxRect()
+
+        val previewAspectRatio = binding.viewFinder.width.toFloat() / binding.viewFinder.height
+        val imageAspectRatio = originalBitmap.width.toFloat() / originalBitmap.height
+
+        val (scaleX, scaleY) = if (imageAspectRatio > previewAspectRatio) {
+            // Gambar lebih lebar, sesuaikan berdasarkan tinggi
+            val scale = originalBitmap.height.toFloat() / binding.viewFinder.height
+            Pair(scale, scale)
+        } else {
+            // Gambar lebih tinggi, sesuaikan berdasarkan lebar
+            val scale = originalBitmap.width.toFloat() / binding.viewFinder.width
+            Pair(scale, scale)
+        }
+
+        val offsetX = (originalBitmap.width - binding.viewFinder.width * scaleX) / 2
+        val offsetY = (originalBitmap.height - binding.viewFinder.height * scaleY) / 2
+
+        val left = (boxRect.left * scaleX + offsetX).toInt().coerceIn(0, originalBitmap.width)
+        val top = (boxRect.top * scaleY + offsetY).toInt().coerceIn(0, originalBitmap.height)
+        val right = (boxRect.right * scaleX + offsetX).toInt().coerceIn(0, originalBitmap.width)
+        val bottom = (boxRect.bottom * scaleY + offsetY).toInt().coerceIn(0, originalBitmap.height)
+
+        val width = right - left
+        val height = bottom - top
+
+        return Bitmap.createBitmap(originalBitmap, left, top, width, height)
+    }
+
+    private fun saveCroppedImage(bitmap: Bitmap): File {
+        val file = File(
+            externalMediaDirs.firstOrNull(),
+            "CROPPED_${
+                SimpleDateFormat(
+                    FILENAME_FORMAT,
+                    Locale.US
+                ).format(System.currentTimeMillis())
+            }.jpg"
+        )
+        FileOutputStream(file).use { out ->
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+        }
+        return file
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun processImage(imagePath: String, uriString: String) {
@@ -122,17 +175,20 @@ class CameraActivity : AppCompatActivity() {
 
         val resizedBitmap = com.udemy.ocrlibrary.ImagePreprocessor.resizeImage(bitmap, 1200, 1200)
         val croppedBitmap = com.udemy.ocrlibrary.ImagePreprocessor.cropDocument(resizedBitmap)
-        val rotatedBitmap = com.udemy.ocrlibrary.ImagePreprocessor.rotateBitmapIfNeeded(imagePath, croppedBitmap)
+        val rotatedBitmap =
+            com.udemy.ocrlibrary.ImagePreprocessor.rotateBitmapIfNeeded(imagePath, croppedBitmap)
 
         com.udemy.ocrlibrary.ImagePreprocessor.preprocessImageAsync(rotatedBitmap) { preprocessedBitmap ->
             val textRecognitionProcessor = com.udemy.ocrlibrary.TextRecognitionProcessor()
             textRecognitionProcessor.recognizeText(preprocessedBitmap, { visionText ->
 
-                val extractedText = com.udemy.ocrlibrary.ImagePreprocessor.extractLeftToRightText(visionText)
-                    .joinToString(" \n")
-                    .uppercase()
+                val extractedText =
+                    com.udemy.ocrlibrary.ImagePreprocessor.extractLeftToRightText(visionText)
+                        .joinToString(" \n")
+                        .uppercase()
 
-                val normalizedText = com.udemy.ocrlibrary.TextNormalizer.normalizeText(extractedText.trim())
+                val normalizedText =
+                    com.udemy.ocrlibrary.TextNormalizer.normalizeText(extractedText.trim())
                 Log.d(TAG, "Extracted Text: ${normalizedText.trimIndent()}")
 
                 val intent = Intent(this, ResultActivity::class.java).apply {
